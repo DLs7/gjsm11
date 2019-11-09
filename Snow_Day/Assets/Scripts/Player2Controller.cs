@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player2Controller : MonoBehaviour
 {
     int countSnow = 0;
 
@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 100f;
 
     private Rigidbody2D playerRigidbody2D;
-    public GameObject crossHair;
 
     private Animator animator;
 
@@ -30,9 +29,8 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         GetInput();
-        MoveCrossHair();
         Shoot();
     }
 
@@ -43,8 +41,8 @@ public class PlayerController : MonoBehaviour
 
     void GetInput()
     {
-        horizontalMove = Input.GetAxis("HorizontalJoystick");
-        verticalMove = Input.GetAxis("VerticalJoystick");
+        horizontalMove = Input.GetAxis("Horizontal");
+        verticalMove = Input.GetAxis("Vertical");
         animator.SetFloat("horizontalMove", horizontalMove);
         animator.SetFloat("verticalMove", verticalMove);
         GetMouseInput();
@@ -58,12 +56,12 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetButtonDown("Fire1Joystick") && canShoot)
+        if (Input.GetButtonDown("Fire1") && canShoot)
         {
             //shoot if the mouse button is held and its been enough time since last shot
             Quaternion spawnRot = Quaternion.identity; //no rotation, bullets here are round
             SnowBallController fireSnowBall = Instantiate(snowBall, new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
-            fireSnowBall.Setup(aim); //give the bullet a direction to fly
+            fireSnowBall.Setup(mouseVector); //give the bullet a direction to fly
             canShoot = false;
         }
     }
@@ -76,27 +74,8 @@ public class PlayerController : MonoBehaviour
         //mouseLeft = Input.GetMouseButton(0); //check left mouse button
     }
 
-    private void MoveCrossHair()
-    {
-        aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"), 0.0f);
-
-        if (aim.magnitude > 0.0f)
-        {
-            aim.Normalize();
-            aim *= 2f;
-            crossHair.transform.localPosition = aim;
-            crossHair.SetActive(true);
-        }
-        else
-        {
-            aim = new Vector3(Input.GetAxis("HorizontalJoystick"), Input.GetAxis("VerticalJoystick"), 0.0f);
-            crossHair.SetActive(false);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Passei");
         if (collision.gameObject.CompareTag("Snow") && !canShoot)
         {
             countSnow++;
@@ -107,6 +86,10 @@ public class PlayerController : MonoBehaviour
             }
             Destroy(collision.gameObject);
             Debug.Log(countSnow);
+        }
+        if (collision.gameObject.CompareTag("SnowBall"))
+        {
+            Debug.Log("OUF");
         }
     }
 }
