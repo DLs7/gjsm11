@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    int countSnow = 0;
+
     float horizontalMove;
     float verticalMove;
 
@@ -14,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public GameObject crossHair;
 
     Vector3 mousePos, mouseVector, aim;
-    bool mouseLeft;
+    bool canShoot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,12 +54,13 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot)
         {
             //shoot if the mouse button is held and its been enough time since last shot
             Quaternion spawnRot = Quaternion.identity; //no rotation, bullets here are round
             SnowBallController fireSnowBall = Instantiate(snowBall, new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
             fireSnowBall.Setup(aim); //give the bullet a direction to fly
+            canShoot = false;
         }
     }
 
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); //position of cursor in world
         mousePos.z = transform.position.z; //keep the z position consistant, since we're in 2d
         mouseVector = (mousePos - transform.position).normalized; //normalized vector from player pointing to cursor
-        mouseLeft = Input.GetMouseButton(0); //check left mouse button
+        //mouseLeft = Input.GetMouseButton(0); //check left mouse button
     }
 
     private void MoveCrossHair()
@@ -75,7 +78,6 @@ public class PlayerController : MonoBehaviour
 
         if (aim.magnitude > 0.3f)
         {
-            Debug.Log(Input.GetAxisRaw("AimHorizontal"));
             aim.Normalize();
             aim *= 4f;
             crossHair.transform.localPosition = aim;
@@ -83,7 +85,23 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            aim = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
             crossHair.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Snow") && !canShoot)
+        {
+            countSnow++;
+            if (countSnow == 3)
+            {
+                countSnow = 0;
+                canShoot = true;
+            }
+            Destroy(collision.gameObject);
+            Debug.Log(countSnow);
         }
     }
 }
