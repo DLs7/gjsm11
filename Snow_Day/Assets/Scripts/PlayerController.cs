@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidbody2D;
     public GameObject crossHair;
 
+    private Animator animator;
+
     Vector3 mousePos, mouseVector, aim;
     bool canShoot = false;
 
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
-
+        animator = GetComponent<Animator>();
         snowBall = Resources.Load<GameObject>("Prefabs/SnowBall");
     }
 
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
+        animator.SetFloat("horizontalMove", horizontalMove);
+        animator.SetFloat("verticalMove", verticalMove);
         GetMouseInput();
     }
 
