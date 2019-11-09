@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         snowBall = Resources.Load<GameObject>("Prefabs/SnowBall");
+        crossHair.SetActive(false);
     }
 
     // Update is called once per frame
