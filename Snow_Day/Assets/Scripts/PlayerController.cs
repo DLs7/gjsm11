@@ -80,10 +80,10 @@ public class PlayerController : MonoBehaviour
     {
         aim = new Vector3(Input.GetAxis("AimHorizontal"), Input.GetAxis("AimVertical"), 0.0f);
 
-        if (aim.magnitude > 0.3f)
+        if (aim.magnitude > 0.0f)
         {
             aim.Normalize();
-            aim *= 4f;
+            aim *= 2f;
             crossHair.transform.localPosition = aim;
             crossHair.SetActive(true);
         }
@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Passei");
         if (collision.gameObject.CompareTag("Snow") && !canShoot)
         {
             countSnow++;
