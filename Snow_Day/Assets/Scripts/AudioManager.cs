@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    bool isMenu = true;
+    public bool isMenu = true;
 
     // Start is called before the first frame update
     void Awake()

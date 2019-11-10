@@ -17,12 +17,15 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator, hudAnimator;
 
+    private AudioManager audioManager;
+
     Vector3 mousePos, mouseVector, aim;
     bool canShoot = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         hudAnimator = GameObject.Find("HudP1").GetComponent<Animator>();
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
             fireSnowBall.Setup(aim/2, "Player2"); //give the bullet a direction to fly
             canShoot = false;
             countSnow = 0;
+            audioManager.Play("throwing_efect");
         }
     }
 

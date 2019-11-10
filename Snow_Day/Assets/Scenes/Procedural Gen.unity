@@ -381,7 +381,6 @@ MonoBehaviour:
   Player2: {fileID: 2050637489}
   SnowPile: {fileID: 6043886522107277356, guid: e8d8955c885d56e4ba301b42cc2278f7,
     type: 3}
-  nextSpawnTime: 5
 --- !u!4 &522918726
 Transform:
   m_ObjectHideFlags: 0
@@ -591,7 +590,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.03529412, g: 0.078431375, b: 0.14901961, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

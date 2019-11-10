@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player2Controller : MonoBehaviour
 {
+    private AudioManager audioManager;
+
     int countSnow = 0;
 
     float horizontalMove;
@@ -22,6 +24,7 @@ public class Player2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         hudAnimator = GameObject.Find("HudP2").GetComponent<Animator>();
@@ -60,8 +63,7 @@ public class Player2Controller : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && canShoot)
         {
-  
-
+            audioManager.Play("throwing_efect");
             //shoot if the mouse button is held and its been enough time since last shot
             //Quaternion spawnRot = Quaternion.identity; //no rotation, bullets here are round
             SnowBallController fireSnowBall = Instantiate(snowBall, new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
