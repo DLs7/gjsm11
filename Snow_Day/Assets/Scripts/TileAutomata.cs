@@ -33,6 +33,8 @@ public class TileAutomata : MonoBehaviour
     public Tile topTile;
     public Tile botTile;
     public Tile treeTile;
+    public GameObject Player1;
+    public GameObject Player2;
 
     int width;
     int height;
@@ -54,20 +56,53 @@ public class TileAutomata : MonoBehaviour
             terrainMap = genTilePos(terrainMap);
         }
 
-        for(int x = 0; x < width; x++)
+        bool done1 = false;
+        bool done2 = false;
+
+        for (int x = 0; x < width; x++)
         {
-            for(int y = 0; y < height; y++)
+            for (int y = 0; y < height; y++)
             {
-                if(terrainMap[x,y] == 1)
+                if (terrainMap[x, y] == 1 || x == 0 || y == 0 || x == width - 1 || y == height - 1)
                 {
                     treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile);
-                    topMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), topTile);
-                } else
-                {
                     botMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), botTile);
+                }
+                else
+                {
+                    topMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), topTile);
                 }
             }
         }
+
+        while(!done1 && !done2)
+            for(int x = width*1/4; x < width*3/4; x++)
+            {
+                for(int y = height * 1 / 4; y < height*3/4; y++)
+                {
+                    if (terrainMap[x, y] == 0)
+                    {
+                        if (!done1)
+                        {
+                            //coloca p1
+                            if (Random.Range(0, 100) < 25)
+                            {
+                                Player1.transform.position = new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0);
+                                done1 = true;
+                            }
+                        }
+                        else
+                        {
+                            //coloca p2
+                            if (Random.Range(0, 100) < 25)
+                            {
+                                Player2.transform.position = new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0);
+                                done2 = true;
+                            }
+                        }
+                    }
+                }
+            }
     }
 
     public int [,] genTilePos(int[,] oldMap)
@@ -128,18 +163,15 @@ public class TileAutomata : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        doSim(numR);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            doSim(numR);
-        }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            clearMap(true);
-        }
     }
 
     public void clearMap(bool complete)
