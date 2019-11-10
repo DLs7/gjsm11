@@ -10,12 +10,12 @@ public class PlayerController : MonoBehaviour
     float verticalMove;
 
     private GameObject snowBall;
-    public float moveSpeed = 100f;
+    public float moveSpeed = 200f;
 
     private Rigidbody2D playerRigidbody2D;
     public GameObject crossHair;
 
-    private Animator animator;
+    private Animator animator, hudAnimator;
 
     Vector3 mousePos, mouseVector, aim;
     bool canShoot = false;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        hudAnimator = GameObject.Find("HudP1").GetComponent<Animator>();
         snowBall = Resources.Load<GameObject>("Prefabs/SnowBall");
         crossHair.SetActive(false);
     }
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hudAnimator.SetInteger("countSnow", countSnow);
         GetInput();
         MoveCrossHair();
         Shoot();
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
             SnowBallController fireSnowBall = Instantiate(snowBall,new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
             fireSnowBall.Setup(aim, "Player2"); //give the bullet a direction to fly
             canShoot = false;
+            countSnow = 0;
         }
     }
 
@@ -103,7 +106,6 @@ public class PlayerController : MonoBehaviour
             countSnow++;
             if (countSnow == 3)
             {
-                countSnow = 0;
                 canShoot = true;
             }
             Destroy(collision.gameObject);

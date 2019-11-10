@@ -10,11 +10,11 @@ public class Player2Controller : MonoBehaviour
     float verticalMove;
 
     private GameObject snowBall;
-    public float moveSpeed = 100f;
+    public float moveSpeed = 200f;
 
     private Rigidbody2D playerRigidbody2D;
 
-    private Animator animator;
+    private Animator animator, hudAnimator;
 
     Vector3 mousePos, mouseVector, aim;
     bool canShoot = false;
@@ -24,12 +24,14 @@ public class Player2Controller : MonoBehaviour
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        hudAnimator = GameObject.Find("HudP2").GetComponent<Animator>();
         snowBall = Resources.Load<GameObject>("Prefabs/SnowBall");
     }
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        hudAnimator.SetInteger("countSnow", countSnow);
         GetInput();
         Shoot();
     }
@@ -64,6 +66,7 @@ public class Player2Controller : MonoBehaviour
             //Quaternion spawnRot = Quaternion.identity; //no rotation, bullets here are round
             SnowBallController fireSnowBall = Instantiate(snowBall, new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
             fireSnowBall.Setup(mouseVector, "Player1"); //give the bullet a direction to fly
+            countSnow = 0;
             canShoot = false;
         }
     }
@@ -83,7 +86,6 @@ public class Player2Controller : MonoBehaviour
             countSnow++;
             if (countSnow == 3)
             {
-                countSnow = 0;
                 canShoot = true;
             }
             Destroy(collision.gameObject);
