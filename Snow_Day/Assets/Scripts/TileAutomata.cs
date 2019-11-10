@@ -30,14 +30,19 @@ public class TileAutomata : MonoBehaviour
     public Tilemap topMap;
     public Tilemap botMap;
     public Tilemap treeMap;
+    public Tilemap bushMap;
     public Tile topTile1;
     public Tile topTile2;
     public Tile botTile;
     public Tile treeTile1;
     public Tile treeTile2;
+    public Tile bushTile1;
+    public Tile bushTile2;
     public GameObject Player1;
     public GameObject Player2;
     public GameObject SnowPile;
+
+    public float nextSpawnTime = 5.0f;
 
     int width;
     int height;
@@ -68,14 +73,30 @@ public class TileAutomata : MonoBehaviour
             {
                 if (terrainMap[x, y] == 1 || x == 0 || y == 0 || x == width - 1 || y == height - 1)
                 {
-                    if (Random.Range(0,100) < 50)
+                    if (Random.Range(0, 100) < 50)
                     {
-                        treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile1);
-                    } else
+                        if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
+                        {
+                            treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile1);
+                        }
+                        else
+                        {
+                            bushMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), bushTile1);
+                        }
+                    } 
+                    else
                     {
-                        treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile2);
+                        if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
+                        {
+                            treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile2);
+                        }
+                        else
+                        {
+                            bushMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), bushTile2);
+                        }
                     }
                     botMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), botTile);
+                    terrainMap[x, y] = 1;
                 }
                 else
                 {
@@ -87,7 +108,7 @@ public class TileAutomata : MonoBehaviour
                     {
                         topMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), topTile2);
                     } 
-                    if (Random.Range(0, 100) < 10)
+                    if (Random.Range(0, 100) < 5)
                     {
                         Instantiate(SnowPile, new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0), Quaternion.identity);
                     }
@@ -191,7 +212,26 @@ public class TileAutomata : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time > nextSpawnTime)
+        {
+            //do stuff here (like instantiate)
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    if (terrainMap[x, y] == 0)
+                    {
+                        if (Random.Range(0, 100) < 5)
+                        {
+                            Instantiate(SnowPile, new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0), Quaternion.identity);
+                        }
+                    }
+                }
+            }
 
+            //increment next_spawn_time
+            nextSpawnTime += 5.0f;
+        }
     }
 
     public void clearMap(bool complete)
