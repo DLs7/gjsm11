@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: b74995d5e6aea404dad579650c27dce4
-  - enabled: 0
-    path: Assets/Scenes/New Scene.unity
-    guid: ca52f6eafa13b744d9ea219018b3cbe3
   - enabled: 1
     path: Assets/Scenes/Procedural Gen.unity
     guid: e1574d88a8c44f3428e5bf30f3edf4ef

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SnowBallController : MonoBehaviour
 {
@@ -14,9 +15,15 @@ public class SnowBallController : MonoBehaviour
 
     private string enemy;
 
+    private GameObject menu;
+
+    private Text text;
+
     // Start is called before the first frame update
     void Start()
     {
+        menu = GameObject.Find("inGameHud");
+        menu = menu.transform.Find("WinOptions").gameObject;
         snowBallRigidbody2D = GetComponent<Rigidbody2D>();
         Destroy(this.gameObject, lifeTime);
     }
@@ -55,19 +62,11 @@ public class SnowBallController : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
             Debug.Log("Morreu");
+            menu.SetActive(true);
         }
         if (collision.gameObject.CompareTag("Tree"))
         {
             Destroy(this.gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag(enemy))
-        {
-            Destroy(collision.gameObject);
-            Debug.Log("Morreu");
         }
     }
 }

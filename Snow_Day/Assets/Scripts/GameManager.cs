@@ -24,4 +24,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayGame();
+        }
+    }
 }
