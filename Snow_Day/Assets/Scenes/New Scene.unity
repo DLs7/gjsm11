@@ -4211,10 +4211,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6535456646019943929, guid: 25cfcb483eebd0749b31f6a13ec4e453,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player2
+      objectReference: {fileID: 0}
     - target: {fileID: 6535456646019943427, guid: 25cfcb483eebd0749b31f6a13ec4e453,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 6535456646019943427, guid: 25cfcb483eebd0749b31f6a13ec4e453,
         type: 3}
@@ -4284,6 +4289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580013888605189233, guid: 696edbc3473f96d4a909fe71686c9450,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 6580013888605189228, guid: 696edbc3473f96d4a909fe71686c9450,
         type: 3}
