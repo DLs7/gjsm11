@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void Awake()
     {
@@ -17,8 +13,15 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+
+    public void PlayGame()
     {
-        
+        SceneManager.LoadScene(1);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("QUIT!");
+        Application.Quit();
     }
 }
