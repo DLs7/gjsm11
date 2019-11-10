@@ -59,12 +59,12 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetButtonDown("Fire1Joystick") && canShoot)
+        if (Input.GetButtonDown("Fire1Joystick") && canShoot && aim.magnitude > 0.0f)
         {
             //shoot if the mouse button is held and its been enough time since last shot
             Quaternion spawnRot = Quaternion.identity; //no rotation, bullets here are round
-            SnowBallController fireSnowBall = Instantiate(snowBall, new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
-            fireSnowBall.Setup(aim); //give the bullet a direction to fly
+            SnowBallController fireSnowBall = Instantiate(snowBall,new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
+            fireSnowBall.Setup(aim, "Player2"); //give the bullet a direction to fly
             canShoot = false;
         }
     }
@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            aim = new Vector3(Input.GetAxis("HorizontalJoystick"), Input.GetAxis("VerticalJoystick"), 0.0f);
             crossHair.SetActive(false);
         }
     }
