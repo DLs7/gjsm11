@@ -8,9 +8,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private AudioManager audioManager;
 
+    private GameObject particleSystem;
+
     private void Awake()
     {
+        particleSystem = GameObject.Find("Particle System");
         DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(particleSystem);
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
