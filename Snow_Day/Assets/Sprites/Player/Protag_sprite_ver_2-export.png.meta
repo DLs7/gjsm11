@@ -38,6 +38,21 @@ TextureImporter:
   - first:
       213: 6883624082866221742
     second: Protag_sprite_ver_2-export_11
+  - first:
+      213: -5307884970373645038
+    second: Protag_sprite_ver_2-export_12
+  - first:
+      213: 5749839196851515550
+    second: Protag_sprite_ver_2-export_13
+  - first:
+      213: 2715988208409336896
+    second: Protag_sprite_ver_2-export_14
+  - first:
+      213: 8600126138738842145
+    second: Protag_sprite_ver_2-export_15
+  - first:
+      213: -5140927904291794853
+    second: Protag_sprite_ver_2-export_16
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -81,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -161,7 +176,7 @@ TextureImporter:
         x: 108
         y: 640
         width: 68
-        height: 108
+        height: 116
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,7 +197,7 @@ TextureImporter:
         x: 208
         y: 640
         width: 68
-        height: 108
+        height: 116
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,7 +365,7 @@ TextureImporter:
         x: 208
         y: 384
         width: 68
-        height: 108
+        height: 116
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,7 +386,7 @@ TextureImporter:
         x: 300
         y: 384
         width: 68
-        height: 108
+        height: 115
       alignment: 9
       pivot: {x: 0.5, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,6 +396,111 @@ TextureImporter:
       bones: []
       spriteID: 0a3ba2b5eb5d2894e8c1a1aa41dc6ca1
       internalID: 6883624082866221742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_sprite_ver_2-export_12
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 268
+        width: 72
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21371d62d675c94a9eaabd925bd6e6a
+      internalID: -5307884970373645038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_sprite_ver_2-export_13
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 268
+        width: 52
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6400f0338ff6974c9ffc2ccd23e3ae5
+      internalID: 5749839196851515550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_sprite_ver_2-export_14
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 268
+        width: 52
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc348d030d1e014fa4578fcffb339aa
+      internalID: 2715988208409336896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_sprite_ver_2-export_15
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 268
+        width: 72
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c642a72f38d13b40ba9f36a3971d345
+      internalID: 8600126138738842145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Protag_sprite_ver_2-export_16
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 140
+        width: 72
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7279637fa574a46934eeceba0f610f
+      internalID: -5140927904291794853
       vertices: []
       indices: 
       edges: []
