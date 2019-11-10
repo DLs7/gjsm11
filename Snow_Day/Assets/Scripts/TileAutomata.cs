@@ -106,7 +106,7 @@ public class TileAutomata : MonoBehaviour
                     } 
                     if (Random.Range(0, 100) < 5)
                     {
-                        Instantiate(SnowPile, new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 2), Quaternion.identity);
+                        Instantiate(SnowPile, new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 3), Quaternion.identity);
                     }
                 }
             }
@@ -223,7 +223,7 @@ public class TileAutomata : MonoBehaviour
                     {
                         if (Random.Range(0, 100) < 5)
                         {
-                            Instantiate(SnowPile, new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 2), Quaternion.identity);
+                            Instantiate(SnowPile, new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 3), Quaternion.identity);
                         }
                     }
                 }
