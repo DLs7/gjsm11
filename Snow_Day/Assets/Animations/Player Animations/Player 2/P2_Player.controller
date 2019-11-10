@@ -150,7 +150,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WalkingLeft
+  m_Name: P2_WalkingLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -229,7 +229,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IdleRight
+  m_Name: P2_IdleRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -431,7 +431,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IdleUp
+  m_Name: P2_IdleUp
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -460,7 +460,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: P2_Player
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: horizontalMove
@@ -573,7 +573,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WalkingDown
+  m_Name: P2_WalkingDown
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -655,7 +655,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WalkingRight
+  m_Name: P2_WalkingRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -709,7 +709,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: P2_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -739,7 +739,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IdleLeft
+  m_Name: P2_IdleLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -844,7 +844,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WalkingUp
+  m_Name: P2_WalkingUp
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
