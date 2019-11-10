@@ -42,10 +42,21 @@ public class TileAutomata : MonoBehaviour
     public GameObject Player2;
     public GameObject SnowPile;
 
-    public float nextSpawnTime = 5.0f;
+    private float nextSpawnTime;
 
     int width;
     int height;
+
+    void deleteSnow()
+    {
+        foreach (GameObject gos in GameObject.FindGameObjectsWithTag("Snow"))
+        {
+            if (gos.name == "Snow(Clone)")
+            {
+                Destroy(gos);
+            }
+        }
+    }
 
     public void doSim(int numR)
     {
@@ -112,20 +123,21 @@ public class TileAutomata : MonoBehaviour
             }
         }
 
-        while(!done1 && !done2)
-            for(int x = width*1/4; x < width*3/4; x++)
+        while (!done1 && !done2)
+        {
+            for (int x = width * 1 / 4; x < width * 3 / 4; x++)
             {
-                for(int y = height * 1 / 4; y < height*3/4; y++)
+                for (int y = height * 1 / 4; y < height * 3 / 4; y++)
                 {
                     if (terrainMap[x, y] == 0)
                     {
-                        if (!done1)
+                        if (!done2)
                         {
                             //coloca p1
                             if (Random.Range(0, 100) < 25)
                             {
-                                Player1.transform.position = new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0);
-                                done1 = true;
+                                Player2.transform.position = new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0);
+                                done2 = true;
                             }
                         }
                         else
@@ -133,13 +145,14 @@ public class TileAutomata : MonoBehaviour
                             //coloca p2
                             if (Random.Range(0, 100) < 25)
                             {
-                                Player2.transform.position = new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0);
-                                done2 = true;
+                                Player1.transform.position = new Vector3((-x + width / 2) + 0.5f, (-y + height / 2), 0);
+                                done1 = true;
                             }
                         }
                     }
                 }
             }
+        }
     }
 
     public int [,] genTilePos(int[,] oldMap)
@@ -202,13 +215,15 @@ public class TileAutomata : MonoBehaviour
 
     private void Start()
     {
+        nextSpawnTime = 10.0f;
         doSim(numR);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextSpawnTime)
+
+        if (Time.timeSinceLevelLoad > nextSpawnTime)
         {
             //do stuff here (like instantiate)
             for (int x = 0; x < width; x++)
@@ -226,7 +241,7 @@ public class TileAutomata : MonoBehaviour
             }
 
             //increment next_spawn_time
-            nextSpawnTime += 5.0f;
+            nextSpawnTime += 10.0f;
         }
     }
 
@@ -235,8 +250,9 @@ public class TileAutomata : MonoBehaviour
         topMap.ClearAllTiles();
         botMap.ClearAllTiles();
         treeMap.ClearAllTiles();
+        botTree.ClearAllTiles();
 
-        if(complete)
+        if (complete)
         {
             terrainMap = null;
         }
