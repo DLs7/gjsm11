@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1Joystick") && canShoot && aim.magnitude > 0.0f)
         {
+            float angulo = Vector3.Angle(aim, transform.forward);
+
             //shoot if the mouse button is held and its been enough time since last shot
             Quaternion spawnRot = Quaternion.identity; //no rotation, bullets here are round
             SnowBallController fireSnowBall = Instantiate(snowBall,new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
