@@ -30,7 +30,7 @@ public class TileAutomata : MonoBehaviour
     public Tilemap topMap;
     public Tilemap botMap;
     public Tilemap treeMap;
-    public Tilemap bushMap;
+    public Tilemap botTree;
     public Tile topTile1;
     public Tile topTile2;
     public Tile botTile;
@@ -75,25 +75,21 @@ public class TileAutomata : MonoBehaviour
                 {
                     if (Random.Range(0, 100) < 50)
                     {
-                        if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
-                        {
+                        if(y == height - 1)
+                            botTree.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile1);
+                        else if(x == 0 || y == 0 || x == width - 1)
                             treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile1);
-                        }
                         else
-                        {
-                            bushMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), bushTile1);
-                        }
+                            treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), bushTile1);
                     } 
                     else
                     {
-                        if (x == 0 || y == 0 || x == width - 1 || y == height - 1)
-                        {
+                        if (y == height - 1)
+                            botTree.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile2);
+                        else if (x == 0 || y == 0 || x == width - 1)
                             treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), treeTile2);
-                        }
                         else
-                        {
-                            bushMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), bushTile2);
-                        }
+                            treeMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), bushTile2);
                     }
                     botMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), botTile);
                     terrainMap[x, y] = 1;
