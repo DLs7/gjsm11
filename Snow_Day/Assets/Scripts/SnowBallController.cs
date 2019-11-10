@@ -8,9 +8,11 @@ public class SnowBallController : MonoBehaviour
     Vector3 dir;
     float speed, speedDecay = 2f, minSpeed = 0.1f, startSpeed = 20;
 
+    private AudioManager audioManager;
+
     private Rigidbody2D snowBallRigidbody2D;
 
-    public float snowBallVelocity = 300f;
+    //public float snowBallVelocity = 300f;
     public float lifeTime = .5f;
 
     private string enemy;
@@ -22,6 +24,7 @@ public class SnowBallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         menu = GameObject.Find("inGameHud");
         menu = menu.transform.Find("WinOptions").gameObject;
         snowBallRigidbody2D = GetComponent<Rigidbody2D>();
@@ -45,7 +48,7 @@ public class SnowBallController : MonoBehaviour
     private void Move()
     {
         //transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
-        speed -= speedDecay * speed * Time.fixedDeltaTime; //slow down the bullet over time
+        //speed -= speedDecay * speed * Time.fixedDeltaTime; //slow down the bullet over time
         if (speed < minSpeed)
         {
             speed = 0; //clamp down speed so it doesnt take too long to stop
@@ -61,6 +64,8 @@ public class SnowBallController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+            audioManager.Pause("battle_song");
+            audioManager.Play("round_win");
             menu.SetActive(true);
         }
         if (collision.gameObject.CompareTag("Tree"))

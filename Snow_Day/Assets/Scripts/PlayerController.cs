@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             //shoot if the mouse button is held and its been enough time since last shot
             Quaternion spawnRot = Quaternion.identity; //no rotation, bullets here are round
             SnowBallController fireSnowBall = Instantiate(snowBall,new Vector3(playerRigidbody2D.transform.position.x, playerRigidbody2D.transform.position.y, 0), Quaternion.identity).GetComponent<SnowBallController>();
-            fireSnowBall.Setup(aim, "Player2"); //give the bullet a direction to fly
+            fireSnowBall.Setup(aim/2, "Player2"); //give the bullet a direction to fly
             canShoot = false;
             countSnow = 0;
         }
