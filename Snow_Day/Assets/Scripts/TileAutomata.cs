@@ -47,17 +47,6 @@ public class TileAutomata : MonoBehaviour
     int width;
     int height;
 
-    void deleteSnow()
-    {
-        foreach (GameObject gos in GameObject.FindGameObjectsWithTag("Snow"))
-        {
-            if (gos.name == "Snow(Clone)")
-            {
-                Destroy(gos);
-            }
-        }
-    }
-
     public void doSim(int numR)
     {
         clearMap(false);
