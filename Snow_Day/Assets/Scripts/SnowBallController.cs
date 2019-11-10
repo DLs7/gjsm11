@@ -37,6 +37,7 @@ public class SnowBallController : MonoBehaviour
 
     private void Move()
     {
+        //transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
         speed -= speedDecay * speed * Time.fixedDeltaTime; //slow down the bullet over time
         if (speed < minSpeed)
         {
