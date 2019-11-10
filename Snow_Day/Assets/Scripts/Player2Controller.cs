@@ -89,7 +89,6 @@ public class Player2Controller : MonoBehaviour
                 canShoot = true;
             }
             Destroy(collision.gameObject);
-            Debug.Log(countSnow);
         }
     }
 }

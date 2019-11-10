@@ -61,7 +61,6 @@ public class SnowBallController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
-            Debug.Log("Morreu");
             menu.SetActive(true);
         }
         if (collision.gameObject.CompareTag("Tree"))
