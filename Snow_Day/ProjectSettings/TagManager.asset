@@ -8,6 +8,7 @@ TagManager:
   - SnowBall
   - Player1
   - Player2
+  - Tree
   layers:
   - Default
   - TransparentFX

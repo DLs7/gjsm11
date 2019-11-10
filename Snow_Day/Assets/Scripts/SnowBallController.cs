@@ -9,7 +9,7 @@ public class SnowBallController : MonoBehaviour
 
     private Rigidbody2D snowBallRigidbody2D;
 
-    public float snowBallVelocity = 100f;
+    public float snowBallVelocity = 300f;
     public float lifeTime = .5f;
 
     private string enemy;
@@ -46,6 +46,20 @@ public class SnowBallController : MonoBehaviour
         Vector3 tempPos = transform.position; //capture current position
         tempPos += dir * speed * Time.fixedDeltaTime; //find new position
         transform.position = tempPos; //update position
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(enemy))
+        {
+            Destroy(collision.gameObject);
+            Destroy(this.gameObject);
+            Debug.Log("Morreu");
+        }
+        if (collision.gameObject.CompareTag("Tree"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
