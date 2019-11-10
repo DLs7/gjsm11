@@ -64,6 +64,8 @@ public class SnowBallController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+            audioManager.Pause("battle_song");
+            audioManager.Play("round_win");
             menu.SetActive(true);
         }
         if (collision.gameObject.CompareTag("Tree"))

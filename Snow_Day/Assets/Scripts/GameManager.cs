@@ -6,19 +6,19 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    //private AudioManager audioManager;
+    private AudioManager audioManager;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        //audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
 
     public void PlayGame()
     {
-        //audioManager.Play("");
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         foreach (GameObject gos in GameObject.FindGameObjectsWithTag("Snow"))
         {
             if (gos.name == "Snow(Clone)")
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
             }
         }
         SceneManager.LoadScene(1);
+        audioManager.Play("battle_song");
     }
 
     public void QuitGame()
