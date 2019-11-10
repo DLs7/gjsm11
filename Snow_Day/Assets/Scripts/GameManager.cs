@@ -16,6 +16,13 @@ public class GameManager : MonoBehaviour
 
     public void PlayGame()
     {
+        foreach (GameObject gos in GameObject.FindGameObjectsWithTag("Snow"))
+        {
+            if (gos.name == "Snow(Clone)")
+            {
+                Destroy(gos);
+            }
+        }
         SceneManager.LoadScene(1);
     }
 
